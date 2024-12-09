@@ -134,14 +134,6 @@ def build_file_p2(input):
     return flattened
 
 
-def build_dir(file):
-    dir[0] = (0, file.index(1) - 1)
-
-    dir = {idx: (file.index(idx), file.rindex(idx)) for idx in range(max(file))}
-
-    return dir
-
-
 def calc_checksum(input):
     return sum([idx * int(chr) for idx, chr in enumerate(input)])
 
@@ -153,6 +145,7 @@ if __name__ == "__main__":
 
     print(f"Part 1: {checksum}")
 
+    input = read_file("day9/input.txt", sep="")[0]
     file_p2 = build_file_p2(input)
     checksum = calc_checksum(file_p2)
     print(f"Part 2: {checksum}")
