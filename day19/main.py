@@ -7,30 +7,28 @@ def parse_input(input):
 
 
 @lru_cache(None)
-def is_possible(design, towels, progress=""):
-    if design == progress:
+def is_possible(design, towels):
+    if design == "":
         return True
 
-    if design[: len(progress)] != progress:
-        return False
-
     for t in towels.split(", "):
-        if is_possible(design, towels, progress + t):
+        if design.startswith(t) and is_possible(design[len(t) :], towels):
             return True
 
     return False
 
 
 @lru_cache(None)
-def count_possible(design, towels, progress=""):
-    if design == progress:
+def count_possible(design, towels):
+    if design == "":
         return 1
 
-    if design[: len(progress)] != progress:
-        return 0
-
     return sum(
-        [count_possible(design, towels, progress + t) for t in towels.split(", ")]
+        [
+            count_possible(design[len(t) :], towels)
+            for t in towels.split(", ")
+            if design.startswith(t)
+        ]
     )
 
 
