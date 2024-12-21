@@ -1,4 +1,5 @@
 INCREMENTS = {"^": (-1, 0), "v": (1, 0), "<": (0, -1), ">": (0, 1)}
+INCREMENTS_DIR = {(-1, 0): "^", (1, 0): "v", (0, -1): "<", (0, 1): ">"}
 OTHER_DIRS = {"^": "^<>", "v": "v<>", "<": "^v<", ">": "^v>", "": "^v<>"}
 REVERSE = {"^": "v", "v": "^", "<": ">", ">": "<"}
 DIRS = "^v<>"
@@ -24,6 +25,13 @@ def step(grid, loc, dir):
         return False
 
     return (r_, c_)
+
+
+def calc_manhattan_distance(coord_1, coord_2):
+    r_1, c_1 = coord_1
+    r_2, c_2 = coord_2
+
+    return abs(r_2 - r_1) + abs(c_2 - c_1)
 
 
 def in_grid(grid, loc):
