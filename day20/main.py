@@ -101,7 +101,7 @@ def calc_grid(loc):
     return coords
 
 
-input = read_file("day20/input.txt", sep="")
+input = read_file("day20/sample.txt", sep="")
 start, grid = parse_input(input)
 
 path = find_exit(grid, start)
@@ -111,11 +111,11 @@ cheats_100 = {key: value for key, value in cheats.items() if value <= -100}
 
 print(f"Part 1: {len(cheats_100)}")
 
-coords_ = []
+coords = []
 for coord in q_table.keys():
-    coords_ += calc_grid(coord)
+    coords += calc_grid(coord)
 
-savings = calc_savings(coords_, q_table)
+savings = calc_savings(coords, q_table)
 savings_100 = {
     (start, end): value for (start, end), value in savings.items() if value >= 100
 }
