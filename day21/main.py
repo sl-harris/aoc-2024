@@ -128,7 +128,7 @@ def calc_complexity(nums, paths):
     )
 
 
-input = read_file("day21/input.txt", sep="")
-paths = [solve_seqs(num, 25)[-1] for num in input]
+input = read_file("day21/sample.txt", sep="")
+paths = [solve_seqs(num, 2)[-1] for num in input]
 
 print(f"Part 1: {calc_complexity(input, paths)}")

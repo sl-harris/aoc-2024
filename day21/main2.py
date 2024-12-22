@@ -158,7 +158,7 @@ def solve_seq(num, level):
     return costs
 
 
-input = read_file("day21/input.txt", sep="")
+input = read_file("day21/sample.txt", sep="")
 
 DIRS = "^v<>A"
 LOCS_DIRS = {d: find(d, DIRPAD) for d in DIRS}
@@ -171,4 +171,4 @@ complexity = 0
 for num in input:
     complexity += min(solve_seq(num, 25)) * int(num.replace("A", ""))
 
-complexity
+print(complexity)
