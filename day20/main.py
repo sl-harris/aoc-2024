@@ -1,5 +1,5 @@
 from util.files import read_file
-from util.grid import in_grid, DIRS, INCREMENTS
+from util.grid import in_grid, DIRECTIONS, INCREMENTS
 
 
 def parse_input(input):
@@ -23,7 +23,7 @@ def find_exit(grid, start):
         if val == "E":
             return path
 
-        for d in DIRS:
+        for d in DIRECTIONS:
             inc_r, inc_c = INCREMENTS[d]
             r_, c_ = r + inc_r, c + inc_c
 
@@ -42,7 +42,7 @@ def explore_cheat(grid, path, q_table):
 
     for p in path:
         r, c = p
-        for d in DIRS:
+        for d in DIRECTIONS:
             inc_r, inc_c = INCREMENTS[d]
 
             r_1, c_1 = r + inc_r, c + inc_c

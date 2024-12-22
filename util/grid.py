@@ -2,7 +2,7 @@ INCREMENTS = {"^": (-1, 0), "v": (1, 0), "<": (0, -1), ">": (0, 1)}
 INCREMENTS_DIR = {(-1, 0): "^", (1, 0): "v", (0, -1): "<", (0, 1): ">"}
 OTHER_DIRS = {"^": "^<>", "v": "v<>", "<": "^v<", ">": "^v>", "": "^v<>"}
 REVERSE = {"^": "v", "v": "^", "<": ">", ">": "<"}
-DIRS = "^v<>"
+DIRECTIONS = "^v<>"
 
 
 def print_grid(grid):
@@ -18,7 +18,7 @@ def step(grid, loc, dir):
     if r_ < 0 or r_ >= len(grid):
         return False
 
-    if c_ < 0 or c_ >= len(grid):
+    if c_ < 0 or c_ >= len(grid[0]):
         return False
 
     if grid[r_][c_] == "#":

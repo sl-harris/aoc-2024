@@ -1,5 +1,6 @@
 from util.files import read_file
 from util.grid import INCREMENTS_DIR
+import datetime as dt
 
 NUMPAD = ["789", "456", "123", " 0A"]
 DIRPAD = [" ^A", "<v>"]
@@ -98,7 +99,8 @@ def solve_seqs(num, num_dir_layers):
 
     paths.append(dir_dirs_str)
 
-    for _ in range(num_dir_layers):
+    for i in range(num_dir_layers):
+        start = dt.datetime.now()
         paths_ = []
 
         for p in paths[-1]:
@@ -111,6 +113,8 @@ def solve_seqs(num, num_dir_layers):
             paths_ += dir_dirs_str
 
         paths.append(paths_)
+        end = dt.datetime.now()
+        print(f"Layer {i+1} finished in { (end - start).total_seconds() } seconds")
 
     return paths
 
@@ -125,6 +129,6 @@ def calc_complexity(nums, paths):
 
 
 input = read_file("day21/input.txt", sep="")
-paths = [solve_seqs(num, 2)[-1] for num in input]
+paths = [solve_seqs(num, 25)[-1] for num in input]
 
 print(f"Part 1: {calc_complexity(input, paths)}")
